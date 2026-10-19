@@ -1,6 +1,6 @@
 # Decisions
 
-**Last updated:** October 15, 2026
+**Last updated:** October 19, 2026
 
 Newest first.
 
@@ -10,6 +10,9 @@ Each decision has an ID (D1 is the oldest), so a pull request or another documen
 
 | ID | Date | Decision |
 |---|---|---|
+| D67 | Oct 19, 2026 | The paint bucket goes; the Background menu under Try it out replaces it |
+| D66 | Oct 19, 2026 | Compare all: one orb moves across the stacked themes |
+| D65 | Oct 19, 2026 | The component page: theme tabs, controls above Try it out, and a side panel with Details and Format |
 | D64 | Oct 18, 2026 | Glass is see-through only on art; on a plain page it's Solid with a glass edge |
 | D62 | Oct 16, 2026 | Fireside gets a full light look, built from the toolkit's light work area |
 | D61 | Oct 15, 2026 | Fireside's light mode changes only the work area (replaced by D62) |
@@ -72,6 +75,44 @@ Each decision has an ID (D1 is the oldest), so a pull request or another documen
 | D1 | Sep 26, 2026 | Structure taken from the Life Hub Library |
 
 ## Decisions
+
+<details>
+<summary><b>D67 · Oct 19, 2026:</b> The paint bucket goes; the Background menu under Try it out replaces it</summary>
+
+- **Decided by:** Sharon ("I actually like the background better anyway so let's go with dropping the paint bucket")
+- **Decision:** Storybook's built-in Backgrounds button (the paint bucket in the toolbar) is removed. The Background menu under Try it out, on the right, is the one place to pick what's behind a component: Plain page, Header art, Landscape lanes or Marble, listing only the picked theme's backgrounds.
+- **Why:** both did the same job in two places. One control, right next to what it changes, is simpler.
+- **Action tile:** its art is Spotlight's page shell header, the menu's Header art. No story on main still opens on the paint bucket's On artwork, so nothing else depends on it.
+- **Updates D32:** the On artwork background from the toolbar goes away; artwork still lives only in Page shell.
+- **Issue:** [#47](https://github.com/sharonlafleur1984/lantern-design-system/issues/47)
+
+</details>
+
+<details>
+<summary><b>D66 · Oct 19, 2026:</b> Compare all: one orb moves across the stacked themes</summary>
+
+- **Decided by:** Sharon ("have one orb that can skip into other cards in card mode to highlight the components")
+- **Decision:** with All picked, Try it out stacks the themes, each with its name, in one mode at a time. One orb serves all of them. Dragged or moved with the arrow keys, it skips from one theme to the next, and the component in the theme it's in lights up.
+- **Why:** one light per page (D45). An orb in every window was too much to look at with every theme on screen.
+- **Changes:** Storybook today gives each dark window its own orb.
+- **Issue:** [#48](https://github.com/sharonlafleur1984/lantern-design-system/issues/48)
+
+</details>
+
+<details>
+<summary><b>D65 · Oct 19, 2026:</b> The component page: theme tabs, controls above Try it out, and a side panel with Details and Format</summary>
+
+- **Decided by:** Sharon, after reviewing the mockup ([#44](https://github.com/sharonlafleur1984/lantern-design-system/issues/44)): "I'm pretty happy with where we're at."
+- **The page, top to bottom:** theme tabs (Fireside, Spotlight, Sunrise, All), the name and what it does, controls, Try it out, Accessibility, For engineers (folded) and Related.
+- **Controls** move out of Storybook's bottom panel to just above Try it out. Each row comes from the component's own controls and ends in All.
+- **Try it out:** the component responds, never the tile behind it. Clicking it picks it. Its header holds screen width (Phone, Tablet, Desktop) and Light or Dark. The focus look shows only when State is Focus or All. In dark mode the orb lights it.
+- **A side panel** on the right has two tabs. **Details:** build status with the last updated date, codebase, design library (Figma), use it for and don't use it for. **Format:** with nothing picked, an empty state; with a component picked, its layout, shape, type and color values, each marked Base or Custom, and Customizations (the label and other content fields, with how to word them).
+- **Accessibility table:** row lines only, cells top-aligned, results are status badges, not buttons.
+- **Why:** reviewing meant scrolling to a bottom panel and hunting for controls. Everything now sits next to what it changes.
+- **Updates D52 and D50.** Mockup: [Lantern quick edit mockup](https://claude.ai/artifact/H2BdEXyWwwRpCdgJoJ3gJt) (private).
+- **Issues:** [#45](https://github.com/sharonlafleur1984/lantern-design-system/issues/45), [#46](https://github.com/sharonlafleur1984/lantern-design-system/issues/46), [#47](https://github.com/sharonlafleur1984/lantern-design-system/issues/47), [#48](https://github.com/sharonlafleur1984/lantern-design-system/issues/48), [#81](https://github.com/sharonlafleur1984/lantern-design-system/issues/81)
+
+</details>
 
 <details>
 <summary><b>D64 · Oct 18, 2026:</b> Glass is see-through only on art; on a plain page it's Solid with a glass edge</summary>
