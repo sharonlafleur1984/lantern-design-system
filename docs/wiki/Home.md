@@ -1,6 +1,6 @@
 # Design system: Dashboard
 
-**Last updated:** October 14, 2026
+**Last updated:** October 19, 2026
 
 One design system for all of Sharon's products: a shared base, with a theme for each product.
 
@@ -16,7 +16,7 @@ One design system for all of Sharon's products: a shared base, with a theme for 
 |---|---|
 | **Where we are** | [Storybook is live](https://lanterndesignsystem.netlify.app/) with 14 components (Select is new; four now use React Aria's names) and a Settings pattern, built on React Aria. After Graduation uses the system ([pinned to v0.2.0](https://github.com/sharonlafleur1984/after-graduation/blob/main/package.json)). Life Hub doesn't use it yet. From v0.4.0, apps install a small release file instead of the whole repo. |
 | **Themes** | Spotlight (After Graduation), Sunrise (Life Hub) and Fireside (the designer toolkit, always dark). What makes each one: [Themes](Themes). |
-| **Next up** | What After Graduation's pages need next: a [phone bottom bar](https://github.com/sharonlafleur1984/lantern-code/issues/41), an [icon set](https://github.com/sharonlafleur1984/lantern-design-system/issues/1) and a [settings menu](https://github.com/sharonlafleur1984/lantern-design-system/issues/2). No dates set. |
+| **Next up** | The [component page template](https://github.com/sharonlafleur1984/lantern-design-system/milestone/7), aiming for Oct 22. Then the [light and glass rules](https://github.com/sharonlafleur1984/lantern-design-system/milestone/8) and the [first new components](https://github.com/sharonlafleur1984/lantern-design-system/milestone/9), starting with the icon set, aiming for Oct 30. The full order: [Roadmap](Roadmap). |
 
 Where we're going: [Roadmap](Roadmap). Why things were decided: [Decisions](Decisions). Every task: [Issues](https://github.com/sharonlafleur1984/lantern-design-system/issues).
 
