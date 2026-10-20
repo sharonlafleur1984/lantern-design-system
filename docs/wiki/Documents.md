@@ -1,6 +1,6 @@
 # Documents
 
-**Last updated:** October 19, 2026
+**Last updated:** October 20, 2026
 
 Every document in this project, in this repo and the private code repo, and when to open it. If none of these match what you need, don't open anything else.
 
@@ -17,6 +17,7 @@ Private files aren't here. They're listed in Sharon's private Notion document in
 | [Add a theme](Add-a-theme) | Adding a theme for a new product |
 | [Add a component](Add-a-component) | Building a new component, or renaming one |
 | [How it fits together](Architecture) | Changing the build, or a value shows up in one place and not another |
+| [Light and glass](Light-and-glass) | You need the rules for see-through glass, the glass edge, where the light is and how bright it is |
 
 ## In this repo
 
@@ -25,6 +26,7 @@ Private files aren't here. They're listed in Sharon's private Notion document in
 | [README](../../blob/main/README.md) | You want to know what this repo is |
 | [CLAUDE.md](../../blob/main/CLAUDE.md) | You're an AI or developer starting work on the plan or the wiki |
 | [Voice](../../blob/main/docs/voice.md) | You're writing anything people will read: Storybook, the wiki, comments, pull requests |
+| [Saved review pages](../../tree/main/docs/references) | You want the pictures behind D70, D71 or D72: the light and glass rules, the contrast fixes, the Orb's focus ring, as Sharon reviewed them |
 | [Tasks (GitHub Issues)](../../issues) | You need to know who's doing what |
 | [Project board](https://github.com/users/sharonlafleur1984/projects/8) | You want to see where every issue stands |
 
