@@ -1,6 +1,6 @@
 # Decisions
 
-**Last updated:** October 19, 2026
+**Last updated:** October 20, 2026
 
 Newest first.
 
@@ -10,6 +10,7 @@ Each decision has an ID (D1 is the oldest), so a pull request or another documen
 
 | ID | Date | Decision |
 |---|---|---|
+| D69 | Oct 20, 2026 | Every surface wears the glass edge by default, lit by the page's light |
 | D67 | Oct 19, 2026 | The paint bucket goes; the Background menu under Try it out replaces it |
 | D66 | Oct 19, 2026 | Compare all: one orb moves across the stacked themes |
 | D65 | Oct 19, 2026 | The component page: theme tabs, controls above Try it out, and a side panel with Details and Format |
@@ -75,6 +76,24 @@ Each decision has an ID (D1 is the oldest), so a pull request or another documen
 | D1 | Sep 26, 2026 | Structure taken from the Life Hub Library |
 
 ## Decisions
+
+<details>
+<summary><b>D69 · Oct 20, 2026:</b> Every surface wears the glass edge by default, lit by the page's light</summary>
+
+- **Decided by:** Sharon ("Glass edge on every component"), ahead of a client theme that will be mostly glass.
+- **Decision:** every component with an edge or a surface wears the shared glass edge from `src/components/glass.css` by default, on a plain page as well as on art.
+- **Which parts:** Button (Primary and Secondary), Card, Tile, Action tile, Select and its menu, Checkbox, Switch, Tag and Toggle button group, and every new part with a surface, Popover included.
+- **Left out:** Text, Link, Separator, Tabs and icons have no surface. Tertiary buttons stay text only.
+- **What the edge is:** the Solid fill stays. The part takes the rim, the inner highlight and shade and the cast shadow from the theme's glass tokens, following the page's light.
+- **It never fades out:** the rim's base line is `color-border-glass`, at least 3:1 against the page in every theme and mode. Small parts (a checkbox box, a switch track, a tag) keep their shadow close.
+- **What changes on screen:** the faint 1px edges on fields and controls (the ones [#10](https://github.com/sharonlafleur1984/lantern-design-system/issues/10) found too light) are replaced by the rim. Cards and tiles light up the same way buttons already did.
+- **Speed:** measured on the busiest Storybook pages before and after, light and dark. Every page still draws at 60 frames a second while the light moves, and style and layout work stays within a few milliseconds. The numbers are in the pull request.
+- **Why:** one edge recipe for every part, so a theme sets it once in its glass tokens and every component follows. A mostly-glass theme then needs no per-component work.
+- **Updates D64:** glass is still see-through only on art; the plain-page look D64 gave Button, Card and tiles is now every surface's default. Tags and toggle groups no longer keep a Solid look on a plain page.
+- **Issue:** none; part of the client-theme work.
+- **Code:** [lantern-code #163](https://github.com/sharonlafleur1984/lantern-code/pull/163)
+
+</details>
 
 <details>
 <summary><b>D67 · Oct 19, 2026:</b> The paint bucket goes; the Background menu under Try it out replaces it</summary>
