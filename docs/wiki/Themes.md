@@ -40,7 +40,7 @@ The designer toolkit: a shell that frames other prototypes, so it stays out of t
 
 - **Color:** Retro. **Peach copper (#E1A36F) is the primary color**, used rarely: the main button, focus and the selected item. Behind it: a deep teal-black page (#08161A), teal panels, cream text and soft yellow for supporting text.
 - **Dark is its standard, so the prototype it frames is the brightest thing on screen.** It also has a full light look for other projects: a pale blue-gray page (#DFEAED), white cards, dark teal text and a deeper copper primary (#8B4E33) that reads on light ([D62](Decisions.md)). The toolkit keeps its dark chrome; its work area (`shell-work-*`) switches with the mode.
-- **Type:** not chosen yet. It borrows Spotlight's fonts and type for now.
+- **Type:** Newsreader for titles, Instrument Sans for everything else ([D43](Decisions.md)).
 - **Motion:** borrows Spotlight's for now.
 - **Glass:** not designed yet.
 - **Decisions:** Fireside is the third theme, in Retro's colors (Oct 14), in [Decisions](Decisions). The research and references are on the toolkit's [Skin page](https://github.com/sharonlafleur1984/designer-toolkit/wiki/Skin).
