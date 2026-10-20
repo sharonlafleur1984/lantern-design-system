@@ -1,6 +1,6 @@
 # Decisions
 
-**Last updated:** October 20, 2026
+**Last updated:** October 19, 2026
 
 Newest first.
 
@@ -10,6 +10,9 @@ Each decision has an ID (D1 is the oldest), so a pull request or another documen
 
 | ID | Date | Decision |
 |---|---|---|
+| D72 | Oct 20, 2026 | The Orb's focus: one ring per theme, tight on the ball, with a light band inside |
+| D71 | Oct 20, 2026 | Six contrast fixes: each gap takes the nearest color that passes, three of them Sharon's own picks |
+| D70 | Oct 20, 2026 | Light and glass rules: glass bends everywhere, one light per page, and the light takes its color from what it falls on |
 | D69 | Oct 20, 2026 | Every surface wears the glass edge by default, lit by the page's light |
 | D67 | Oct 19, 2026 | The paint bucket goes; the Background menu under Try it out replaces it |
 | D66 | Oct 19, 2026 | Compare all: one orb moves across the stacked themes |
@@ -76,6 +79,64 @@ Each decision has an ID (D1 is the oldest), so a pull request or another documen
 | D1 | Sep 26, 2026 | Structure taken from the Life Hub Library |
 
 ## Decisions
+
+<details>
+<summary><b>D72 · Oct 20, 2026:</b> The Orb's focus: one ring per theme, tight on the ball, with a light band inside</summary>
+
+- **Decided by:** Sharon, through seven rounds of notes on an options page ([Orb focus ring options](../blob/main/docs/references/orb-focus-ring/index.html), saved from the Claude page she reviewed), then "approve the orb focus work."
+- **Why the Orb has focus at all:** only where a person can move the light. In Storybook's glass stories, the playground and Try it out, the Orb is a control you drag or move with the arrow keys, so it has to show where the keyboard is. On a product page the light's source is the product's own component and a still Orb is decorative, never in the tab order.
+- **The ring sits on the ball,** not on the 44px hit area, and is sized from the ball (the light band an eighth of its size, the ring a quarter), so a bigger Orb gets a bigger ring. Sharon: "can't it nest just outside the size of the orb and adjust based on the size of the orb."
+- **One color per theme, both modes,** the shared token `color-border-focus-orb`: the theme's focus color stepped toward white until it sits just above 3:1 on the light page, which leaves room to spare on the dark one (Sharon: "the dark could work for both light and dark which makes this simpler"). Spotlight `#db626d`, Sunrise `#888585`, Fireside `#a3735e`, each 3.3:1 or better in light and 4:1 or better in dark, held one step back from the edge so a different monitor still passes. The dark mode's own ring could not serve both: it is 2.1:1 on Spotlight's light page and 1.0:1 on Sunrise's.
+- **The light band inside** carries the focus on art, where the theme's ring alone vanished on Spotlight's red header (1:1 in light mode, [#11](https://github.com/sharonlafleur1984/lantern-design-system/issues/11)). The ring cannot tell what is behind it, so one color has to pass on the page and the band has to pass on the art.
+- **The Orb's own light is left alone.** Sharon asked for the light itself to be the focus; earlier drafts added a bright disc on focus, which was a stand-in and not the Orb's light, and read as "a concentrated glow when the orb has a very soft light." It is gone. A focus indicator still has to show for everyone who tabs, not only with contrast turned up, so the ring stays.
+- **Increase contrast** swaps the ring for the theme's full focus color. Forced colors draw a plain outline.
+- **Checked in tests,** every theme and mode: the ring 3:1 on the page and on a card, and the ring or the band 3:1 on every art color.
+- **A new shared token,** so every theme sets `color.border.focus-orb`, and [Add a theme](Add-a-theme) applies as usual.
+- **Issue:** closes [#11](https://github.com/sharonlafleur1984/lantern-design-system/issues/11).
+- **Code:** [lantern-code #165](https://github.com/sharonlafleur1984/lantern-code/pull/165)
+
+</details>
+
+<details>
+<summary><b>D71 · Oct 20, 2026:</b> Six contrast fixes: each gap takes the nearest color that passes, three of them Sharon's own picks</summary>
+
+- **Decided by:** Sharon, from a page of swatches drawn with the real token values ([Contrast fixes to pick](../blob/main/docs/references/contrast-fixes/index.html), saved from the Claude page she reviewed). "On contrast fixes and light and glass rules, I think we are good, I agree."
+- **The six fixes,** each measured the way the contrast test measures:
+  - **The neutral Callout's icon chip** uses the tertiary ink instead of the muted ink, in every theme. White on it is 5.1:1 or better everywhere; on Sunrise light's muted ink it was 2.6:1.
+  - **The Switch's off track** uses the tertiary ink instead of the muted ink, in every theme. The track is 5.1:1 or better on the page and the white knob 5.3:1 or better on it.
+  - **The checked Checkbox's mark** uses the accent's text color instead of the accent base, in every theme. On the tinted box it is 4.2:1 or better; Spotlight dark's was 2.3:1.
+  - **Fireside light's focus glow** is the secondary ink, dark teal, 8.5:1 on the page, Sharon's pick over the copper focus ring (5.3:1). White was 1.2:1.
+  - **Fireside dark's error strong color,** the destructive button's fill and the error Callout's chip, is fire red 300, Sharon's pick over fire red 400. Dark text on it is 9:1; on fire red 600 it was 3.3:1.
+  - **Spotlight dark's primary hover and pressed fill** is red 600 lifted 10% toward white, `#d03241`, Sharon's pick over 15%. It is 3.7:1 against the dark page and white text on it is 5:1; red 700 was 2.3:1, darker than the page needs.
+- **One gap was a false hit** and is gone from the list: "Sunrise light's header tiles' focus glow on the marble." Sunrise's header has no tiles (Sharon); the test now checks each theme's art against the focus color its components wear ([lantern-code #166](https://github.com/sharonlafleur1984/lantern-code/pull/166)).
+- **Why the nearest passing color:** each fix keeps the component's look and changes one value by the smallest step that clears the line, so nothing else on the page moves. Where two steps both passed, Sharon chose by eye.
+- **Issues:** closes [#94](https://github.com/sharonlafleur1984/lantern-design-system/issues/94) and [#9](https://github.com/sharonlafleur1984/lantern-design-system/issues/9). The field edges in [#10](https://github.com/sharonlafleur1984/lantern-design-system/issues/10) are D69's.
+- **Code:** [lantern-code #167](https://github.com/sharonlafleur1984/lantern-code/pull/167)
+
+</details>
+
+<details>
+<summary><b>D70 · Oct 20, 2026:</b> Light and glass rules: glass bends everywhere, one light per page, and the light takes its color from what it falls on</summary>
+
+- **Decided by:** Sharon, in two rounds of notes on the draft ([Light and glass rules](../blob/main/docs/references/light-and-glass-rules/index.html), saved from the Claude page she reviewed) and then "I think we are good, I agree."
+- **The rules** are the wiki page [Light and glass](Light-and-glass), nine of them. In short:
+  - One light per page, and every component with a surface answers it (D69).
+  - Glass bends what is behind it wherever it is: art, a photo or a plain page. Solid keeps its fill and wears the edge. Which one a component uses is the designer's choice per use, never the system's guess. This replaces the "only on art" part of D64.
+  - Words never bend, and glass text passes 4.5:1 against whatever is behind it.
+  - Every component with a surface can be Glass or Solid, Solid by default. Select, Checkbox, Switch, Tag and Toggle button group gain the switch.
+  - Settings win over looks, and the Solid look under Reduce transparency or Increase contrast is designed, not a fallback. [#8](https://github.com/sharonlafleur1984/lantern-design-system/issues/8) reviews it.
+  - One light, brighter at night and softer by day, with one setting: Off, On (the default, the source stays put) or Follow (the light goes where the person points). "Follow" is a draft name. This replaces D58's dark-mode-only cursor light.
+  - Each product has a visible source for its light: the centre of Spotlight's wheel, Sunrise's Let's chat orb, Fireside's logo with the warmer Fireside glow and no orb drawn. The Orb is that same light the moment a person moves it.
+  - The light takes its color from what it falls on. On art it brightens the pattern (D59). On a plain page it takes only the page's own tint and shows through strength and falloff, in the rims it hits and the shadows it casts, never through the theme's color. Two mocks that tinted the light red read as "a light bulb with a filter" (Sharon) and were dropped.
+  - Every component near the light reacts the same way, whatever the source.
+- **Component rules and product rules are kept apart:** component rules (what a component can do) live on the Components pages and the wiki; product rules (what each product chooses) live on the Themes page and a Products section in Storybook, one page per product. The products drive the changes: a product's need becomes a component option built for all three, and the product then picks it up. Nothing stays locked to one project.
+- **Why glass pages open slowly, and the fix:** the slow part is the light, not the glass. The renderer that lights the background (D59) and the orb drawing (D57) run on the main thread as the page opens, in one freeze of about two seconds; see-through glass itself costs about a tenth of a second. Sharon agreed to the first fix: show the page with its CSS glow, then draw the orb and the lit background in the next idle moment and fade them in. The numbers are on the wiki page.
+- **Not yet built:** rules 2, 4, 6, 7 and 8 describe where the code goes. Today glass is still see-through only on art, five components have no Glass switch, the cursor light is dark-mode only, and the light on a plain page is white. Each becomes its own pull request.
+- **Replaces:** the "only on art" part of D64, and D58's dark-mode-only cursor light.
+- **Issues:** closes [#49](https://github.com/sharonlafleur1984/lantern-design-system/issues/49) and answers the open questions in [#4](https://github.com/sharonlafleur1984/lantern-design-system/issues/4).
+- **Code:** none yet; the wiki page and the saved review page are in the pull request that adds this entry.
+
+</details>
 
 <details>
 <summary><b>D69 · Oct 20, 2026:</b> Every surface wears the glass edge by default, lit by the page's light</summary>

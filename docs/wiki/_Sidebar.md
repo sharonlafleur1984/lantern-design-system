@@ -6,6 +6,7 @@
 
 **Reference**
 - [Themes](Themes)
+- [Light and glass](Light-and-glass)
 - [Add a theme](Add-a-theme)
 - [Add a component](Add-a-component)
 - [How it fits together](Architecture)
