@@ -1,6 +1,6 @@
 # Decisions
 
-**Last updated:** October 19, 2026
+**Last updated:** October 20, 2026
 
 Newest first.
 
@@ -10,6 +10,7 @@ Each decision has an ID (D1 is the oldest), so a pull request or another documen
 
 | ID | Date | Decision |
 |---|---|---|
+| D68 | Oct 20, 2026 | The side panel moves into Storybook's own panel, with Details, Format and Content first |
 | D67 | Oct 19, 2026 | The paint bucket goes; the Background menu under Try it out replaces it |
 | D66 | Oct 19, 2026 | Compare all: one orb moves across the stacked themes |
 | D65 | Oct 19, 2026 | The component page: theme tabs, controls above Try it out, and a side panel with Details and Format |
@@ -75,6 +76,23 @@ Each decision has an ID (D1 is the oldest), so a pull request or another documen
 | D1 | Sep 26, 2026 | Structure taken from the Life Hub Library |
 
 ## Decisions
+
+<details>
+<summary><b>D68 · Oct 20, 2026:</b> The side panel moves into Storybook's own panel, with Details, Format and Content first</summary>
+
+- **Decided by:** Sharon ("we should utilize this area to build out our own side panel"; "we can leave the side nav we built out in storybook")
+- **Decision:** the side panel from D65 moves into Storybook's panel on the right, as three tabs with sub-tabs:
+  - **Details:** Status, Usage, Code
+  - **Format:** Spacing, Radius, Motion, Typography, Color. Each value shows its token, or "No token."
+  - **Content:** Settings, Screen reader
+- **Also:** Storybook's Actions and Interactions tabs are hidden, and Accessibility comes after Lantern's three tabs, so all three are in view on a laptop. Usage rules leaves the left sidebar for every component; usage lives in Details. Nothing on the page marks the picked component, so it can't be mistaken for focus.
+- **Why:** Storybook already has a panel beside every story. Using it puts the details where reviewers look, and leaves the page for the component.
+- **Later:** the layout drawing in Format's Spacing tab.
+- **Updates D65:** the side panel's place and tabs. Theme tabs, controls and Try it out stay as D65 says.
+- **Issue:** [#81](https://github.com/sharonlafleur1984/lantern-design-system/issues/81)
+- **Code:** [lantern-code #148](https://github.com/sharonlafleur1984/lantern-code/pull/148)
+
+</details>
 
 <details>
 <summary><b>D67 · Oct 19, 2026:</b> The paint bucket goes; the Background menu under Try it out replaces it</summary>
