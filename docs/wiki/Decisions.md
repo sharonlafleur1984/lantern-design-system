@@ -85,6 +85,7 @@ Each decision has an ID (D1 is the oldest), so a pull request or another documen
 - **Action tile:** its art is Spotlight's page shell header, the menu's Header art. No story on main still opens on the paint bucket's On artwork, so nothing else depends on it.
 - **Updates D32:** the On artwork background from the toolbar goes away; artwork still lives only in Page shell.
 - **Issue:** [#47](https://github.com/sharonlafleur1984/lantern-design-system/issues/47)
+- **Code:** [lantern-code #144](https://github.com/sharonlafleur1984/lantern-code/pull/144)
 
 </details>
 
@@ -96,6 +97,7 @@ Each decision has an ID (D1 is the oldest), so a pull request or another documen
 - **Why:** one light per page (D45). An orb in every window was too much to look at with every theme on screen.
 - **Changes:** Storybook today gives each dark window its own orb.
 - **Issue:** [#48](https://github.com/sharonlafleur1984/lantern-design-system/issues/48)
+- **Code:** [lantern-code #148](https://github.com/sharonlafleur1984/lantern-code/pull/148)
 
 </details>
 
@@ -104,12 +106,15 @@ Each decision has an ID (D1 is the oldest), so a pull request or another documen
 
 - **Decided by:** Sharon, after reviewing the mockup ([#44](https://github.com/sharonlafleur1984/lantern-design-system/issues/44)): "I'm pretty happy with where we're at."
 - **The page, top to bottom:** theme tabs (Fireside, Spotlight, Sunrise, All), the name and what it does, controls, Try it out, Accessibility, For engineers (folded) and Related.
-- **Controls** move out of Storybook's bottom panel to just above Try it out. Each row comes from the component's own controls and ends in All.
-- **Try it out:** the component responds, never the tile behind it. Clicking it picks it. Its header holds screen width (Phone, Tablet, Desktop) and Light or Dark. The focus look shows only when State is Focus or All. In dark mode the orb lights it.
-- **A side panel** on the right has two tabs. **Details:** build status with the last updated date, codebase, design library (Figma), use it for and don't use it for. **Format:** with nothing picked, an empty state; with a component picked, its layout, shape, type and color values, each marked Base or Custom, and Customizations (the label and other content fields, with how to word them).
+- **Look:** neutral gray, the same in every theme. Each part is a card with a light title strip; the Accessibility header and For engineers bar are light too (Sharon picked the lighter gray version of the mockup). One label style (small capitals, not bold, so labels never compete with what they label), four text sizes, and all spacing on the 4-point scale.
+- **Under the name:** the picks on show, like Primary · Solid · Medium · Rest. The side panel repeats them under its title.
+- **Controls** move out of Storybook's bottom panel to just above Try it out, as button sets in two lined-up columns. The picked choice shows by shadow at 3:1, not color alone. A row is a setting with an All (like Variant, Size, Style and State). Settings without one (a label, an icon, on or off) are in Format's Customizations, and settings a State already covers (Disabled, Loading) aren't repeated. Device settings use Apple's names (Reduce motion, Reduce transparency, Increase contrast: Off, On or System) and add Text size, 100% to 200% (WCAG 1.4.4).
+- **Try it out:** the component responds, never the tile behind it. Clicking it picks it. Its header holds screen width (Phone, Tablet, Desktop) and Mode. Mode shows one look at a time (Light, Dark, Auto or System), never light and dark side by side. The focus look shows only when State is Focus or All, and the page never opens with focus on the component. In dark mode the orb lights it.
+- **A side panel** on the right has two tabs. **Details:** build status with the last updated date, design library (Figma), use it for and don't use it for (each with its example), then codebase with Show code and Copy code. Use it for and Don't use it for follow the instance on show (Button: its Variant), and the examples follow its Size and Style. **Format:** with nothing picked, an empty state; with a component picked, its theme, its layout as the browser's inspector shows it (the real part to scale: content, padding with the gap, and the space around it), shape, type, what a screen reader says, color with contrast, and Customizations (the label and other content fields, with how to word them). Base or Custom tags come later.
 - **Accessibility table:** row lines only, cells top-aligned, results are status badges, not buttons.
 - **Why:** reviewing meant scrolling to a bottom panel and hunting for controls. Everything now sits next to what it changes.
 - **Updates D52 and D50.** Mockup: [Lantern quick edit mockup](https://claude.ai/artifact/H2BdEXyWwwRpCdgJoJ3gJt) (private).
+- **Code:** [lantern-code #148](https://github.com/sharonlafleur1984/lantern-code/pull/148)
 - **Issues:** [#45](https://github.com/sharonlafleur1984/lantern-design-system/issues/45), [#46](https://github.com/sharonlafleur1984/lantern-design-system/issues/46), [#47](https://github.com/sharonlafleur1984/lantern-design-system/issues/47), [#48](https://github.com/sharonlafleur1984/lantern-design-system/issues/48), [#81](https://github.com/sharonlafleur1984/lantern-design-system/issues/81)
 
 </details>
