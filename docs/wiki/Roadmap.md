@@ -25,7 +25,7 @@ Each milestone is a finish line, with the date it's aiming for.
 | [Release 0.4.0](https://github.com/sharonlafleur1984/lantern-design-system/milestone/5) | The next release ships the right version, installs cleanly and has a safe workflow | Aiming for Nov 12, 2026 |
 | [Code health](https://github.com/sharonlafleur1984/lantern-design-system/milestone/6) | One theme is one folder, no unused tokens, consistent props and quiet builds | Aiming for Nov 19, 2026 |
 | [Every page matches Button's](https://github.com/sharonlafleur1984/lantern-design-system/milestone/10) | Every component's page matches Button's, with that component's open bugs fixed in the same pass | Not set yet |
-| [Form parts](https://github.com/sharonlafleur1984/lantern-design-system/milestone/11) | Radio group, text field, search field and a list of labels and values pass the Storybook gate in every theme, light and dark | Not set yet |
+| [Form parts](https://github.com/sharonlafleur1984/lantern-design-system/milestone/11) | Radio group, text field, search field, a list of labels and values, and the Settings menu pass the Storybook gate in every theme, light and dark | Not set yet |
 
 <details>
 <summary>Already done</summary>

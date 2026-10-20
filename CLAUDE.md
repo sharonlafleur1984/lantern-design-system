@@ -17,7 +17,7 @@ Lantern design system: the plan and docs for one shared design system with a the
 - **Code decisions get two pull requests.** The code and its Storybook docs go in lantern-code, and the Decisions entry goes here. Each links to the other.
 - **Every issue names its problem.** Each one has "Problem to solve" and "What success looks like."
 - **Big work is a parent issue.** Its sub-issues are in the order they depend on each other.
-- **Every new issue has a place.** It gets a milestone or a parent issue, and goes on the [project board](https://github.com/users/sharonlafleur1984/projects/8) with its Roadmap value (Now, Next or Later) to match the [Roadmap](docs/wiki/Roadmap.md) page.
+- **Every new issue has a place.** It goes on the [project board](https://github.com/users/sharonlafleur1984/projects/8) with its Roadmap value (Now, Next or Later), matching the [Roadmap](docs/wiki/Roadmap.md) page. Now and Next issues also get a milestone or a parent issue.
 - **Pull requests close their issue.** A pull request in lantern-code says "Fixes sharonlafleur1984/lantern-design-system#N."
 - **Every commit names its Claude session.** End each commit message with `Claude-Session:` and the link to the session that made it.
 - **Main is protected.** Changes reach main only through a pull request ([cheat sheet](https://github.com/sharonlafleur1984/how-i-work/blob/main/templates/github-ruleset.md)). Remind Sharon if the "Protect main" ruleset is missing.
