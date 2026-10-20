@@ -87,6 +87,8 @@ Each decision has an ID (D1 is the oldest), so a pull request or another documen
 - **What the edge is:** the Solid fill stays. The part takes the rim, the inner highlight and shade and the cast shadow from the theme's glass tokens, following the page's light.
 - **It never fades out:** the rim's base line is `color-border-glass`, at least 3:1 against the page in every theme and mode. Small parts (a checkbox box, a switch track, a tag) keep their shadow close.
 - **What changes on screen:** the faint 1px edges on fields and controls (the ones [#10](https://github.com/sharonlafleur1984/lantern-design-system/issues/10) found too light) are replaced by the rim. Cards and tiles light up the same way buttons already did.
+- **A soft light in light mode,** Sharon's pick from three pictures. The cast shadow is a quarter of its old tint, closer and nearly twice as blurred. A card carries that one shadow instead of stacking its resting shadow on it.
+- **Dark mode keeps its stronger shadow.** Each theme's `glass.cast`, `glass.contact`, `glass.shade`, `glass.cast-distance` and `glass.cast-blur` tokens changed in light mode only.
 - **Speed:** measured on the busiest Storybook pages before and after, light and dark. Every page still draws at 60 frames a second while the light moves, and style and layout work stays within a few milliseconds. The numbers are in the pull request.
 - **Why:** one edge recipe for every part, so a theme sets it once in its glass tokens and every component follows. A mostly-glass theme then needs no per-component work.
 - **Updates D64:** glass is still see-through only on art; the plain-page look D64 gave Button, Card and tiles is now every surface's default. Tags and toggle groups no longer keep a Solid look on a plain page.
