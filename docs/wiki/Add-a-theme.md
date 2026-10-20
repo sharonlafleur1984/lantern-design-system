@@ -31,8 +31,9 @@ A theme for a client project stays in that project's private repo and is never a
 1. **Make the folder in the other repo,** like `tokens/themes/<id>`. It holds the same files as a theme here: `theme.json`, the token files and a `dark/` folder if it has dark mode. Its `fonts.css` (the weights its type tokens use) and any background images named in `theme.json` sit in the same folder.
 2. **Name the art its glass sits on.** The glass contrast check needs the colors behind see-through glass, which a theme here names in the test itself. A theme kept outside lists them in `theme.json` instead, each a color or a token name in braces:
    ```json
-   { "name": "Candle", "product": "Sample app", "order": 9, "alwaysDark": false, "glassOnArt": ["{color-accent-base}", "#5b0f1a"] }
+   { "name": "Candle", "product": "Sample app", "order": 9, "alwaysDark": false, "glassOnArt": ["{color-accent-base}", "#5b0f1a"], "tilesOnArt": true }
    ```
+   `tilesOnArt` is true when the page shell's tiles sit on that art, as in Spotlight's header: the check then uses the tiles' light focus glow. Leave it out when the art carries other components, which wear the theme's focus ring.
 3. **Check it.** With lantern-code checked out next to the other repo:
    ```sh
    cd lantern-code && npm ci && npm run check-theme -- ../other-repo/tokens/themes/<id>
