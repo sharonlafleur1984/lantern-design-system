@@ -13,6 +13,7 @@ Each decision has an ID (D1 is the oldest), so a pull request or another documen
 | D72 | Oct 20, 2026 | The Orb's focus: one ring per theme, tight on the ball, with a light band inside |
 | D71 | Oct 20, 2026 | Six contrast fixes: each gap takes the nearest color that passes, three of them Sharon's own picks |
 | D70 | Oct 20, 2026 | Light and glass rules: glass bends everywhere, one light per page, and the light takes its color from what it falls on |
+| D68 | Oct 20, 2026 | The icon set is Lucide, behind an Icon component |
 | D67 | Oct 19, 2026 | The paint bucket goes; the Background menu under Try it out replaces it |
 | D66 | Oct 19, 2026 | Compare all: one orb moves across the stacked themes |
 | D65 | Oct 19, 2026 | The component page: theme tabs, controls above Try it out, and a side panel with Details and Format |
@@ -134,6 +135,22 @@ Each decision has an ID (D1 is the oldest), so a pull request or another documen
 - **Replaces:** the "only on art" part of D64, and D58's dark-mode-only cursor light.
 - **Issues:** closes [#49](https://github.com/sharonlafleur1984/lantern-design-system/issues/49) and answers the open questions in [#4](https://github.com/sharonlafleur1984/lantern-design-system/issues/4).
 - **Code:** none yet; the wiki page and the saved review page are in the pull request that adds this entry.
+
+</details>
+
+<details>
+<summary><b>D68 · Oct 20, 2026:</b> The icon set is Lucide, behind an Icon component</summary>
+
+- **Decided by:** Sharon ("lucide is my pick as well"), from three options shown as pictures: Lucide, Phosphor and Tabler.
+- **Decision:** Lantern's icons come from [Lucide](https://lucide.dev/icons), a free set of about 1,600 icons, through one Icon component. A part asks for an icon by Lantern's name (`settings`, `warning`, `chevronDown`) and never draws its own; the set lists only the names Lantern uses.
+- **Why:** it's the closest to the line icons Lantern already drew by hand, with the same 24px grid, 2px line and round ends. React Aria's own docs use it, and it's the most actively maintained of the three.
+- **Not Phosphor or Tabler:** six weights would need a rule per theme, and Tabler's shapes are busier at 16px.
+- **Sizes and color from tokens.** `icon.size` is small 16px inside controls, medium 20px next to text and large 24px on its own, and `icon.stroke` is 2. An icon draws in the text color around it, so it keeps that text's contrast in every theme and mode.
+- **Decorative unless labeled.** Most icons sit next to words, so they're hidden from screen readers. With a label, an icon is an image a screen reader names.
+- **The action tile's mark** is an Icon too. Each theme's `action-tile.chosen-mark` token names it instead of holding a typed character. Spotlight's is `sparkle`, the four-point star; Sunrise's and Fireside's are `check`.
+- **Next:** Callout, Link, Tag and Select move onto Icon ([#76](https://github.com/sharonlafleur1984/lantern-design-system/issues/76)).
+- **Issue:** [#1](https://github.com/sharonlafleur1984/lantern-design-system/issues/1)
+- **Code:** [lantern-code #161](https://github.com/sharonlafleur1984/lantern-code/pull/161)
 
 </details>
 
