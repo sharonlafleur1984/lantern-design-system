@@ -26,7 +26,7 @@ Private files aren't here. They're listed in Sharon's private Notion document in
 | [README](../../blob/main/README.md) | You want to know what this repo is |
 | [CLAUDE.md](../../blob/main/CLAUDE.md) | You're an AI or developer starting work on the plan or the wiki |
 | [Voice](../../blob/main/docs/voice.md) | You're writing anything people will read: Storybook, the wiki, comments, pull requests |
-| [Saved review pages](../../tree/main/docs/references) | You want the pictures behind D70, D71 or D72: the light and glass rules, the contrast fixes, the Orb's focus ring, as Sharon reviewed them |
+| [Saved review pages](../../tree/main/docs/references) | You want the pictures behind D70, D71, D72 or D73: the light and glass rules, the contrast fixes, the Orb's focus ring, the shadow rules, as Sharon reviewed them |
 | [Tasks (GitHub Issues)](../../issues) | You need to know who's doing what |
 | [Project board](https://github.com/users/sharonlafleur1984/projects/8) | You want to see where every issue stands |
 

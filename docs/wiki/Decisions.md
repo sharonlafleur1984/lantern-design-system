@@ -10,6 +10,7 @@ Each decision has an ID (D1 is the oldest), so a pull request or another documen
 
 | ID | Date | Decision |
 |---|---|---|
+| D73 | Oct 20, 2026 | Shadows: one light casts every shadow, at one of three heights; the static shadow tokens retire |
 | D72 | Oct 20, 2026 | The Orb's focus: one ring per theme, tight on the ball, with a light band inside |
 | D71 | Oct 20, 2026 | Six contrast fixes: each gap takes the nearest color that passes, three of them Sharon's own picks |
 | D70 | Oct 20, 2026 | Light and glass rules: glass bends everywhere, one light per page, and the light takes its color from what it falls on |
@@ -80,6 +81,25 @@ Each decision has an ID (D1 is the oldest), so a pull request or another documen
 | D1 | Sep 26, 2026 | Structure taken from the Life Hub Library |
 
 ## Decisions
+
+<details>
+<summary><b>D73 · Oct 20, 2026:</b> Shadows: one light casts every shadow, at one of three heights; the static shadow tokens retire</summary>
+
+- **Decided by:** Sharon, after the Popover's drop shadow looked wrong next to the lit cards ("the shadow that's being used doesn't look natural"), from a draft with mocks ([Shadow rules](../blob/main/docs/references/shadow-rules/index.html), saved from the Claude page she reviewed): "I approve the shadow rules."
+- **The rules,** now a section of [Light and glass](Light-and-glass):
+  - One light casts every shadow. A shadow is the glass cast from the page's light (D69), away from the light, in the theme's cast color at the theme's strength. No component has a shadow of its own. The three static shadow tokens, `shadow-rest`, `shadow-hover` and `shadow-float`, retire once the last component has moved.
+  - Three heights and nothing in between: Resting (in the page's flow, a short cast and a contact shadow), Raised (lifted toward the light, twice the distance, wider; a hover or a press), Floating (above the page, four times the distance, widest and faintest; anything React Aria floats).
+  - Higher is farther, softer and fainter: the distance doubles at each step, the blur grows, the tint thins, and the direction never changes within a page. The draft scale: raised 2× distance, 1.5× blur, 1.2× tint; floating 4×, 2×, 1.4×; the resting values are D69's.
+  - Night is stronger, day is softer, and the theme sets the tint. The heights scale the theme's values and never add a color.
+  - Every component has one height, and the floating ones are React Aria's: Popover, Select's menu, Menu, Tooltip, Dialog, Modal and the open Settings sheet float; Card, Tile, Action tile, Callout, Select's field, the Checkbox box, the Switch track, Tag and Toggle button group rest; any of those raise while hovered or pressed, as does the Orb's ball.
+  - Settings change the strength, never the direction. Increase contrast strengthens the cast and adds D69's 3:1 line; Reduce transparency changes nothing; Reduce motion keeps the light still; forced colors draw borders.
+  - One place in the code, checked by a test: the heights are classes on the shared glass edge, and a test fails when a component stylesheet draws a `box-shadow` that is not the glass cast.
+- **Why:** two shadow systems lived side by side, the glass cast that follows the light and three static drop shadows that always fell straight down, and each new component picked one. One rule, with a test, ends that.
+- **What React Aria gives:** no shadows, since it is unstyled, but the list of parts that float, which is the backbone of the fifth rule.
+- **Updates D69:** the glass edge gains two heights above its resting one.
+- **Code:** lantern-code, the shadow heights pull request (linked from the pull request that adds this entry); the Popover follows in its own once #159 is in.
+
+</details>
 
 <details>
 <summary><b>D72 · Oct 20, 2026:</b> The Orb's focus: one ring per theme, tight on the ball, with a light band inside</summary>

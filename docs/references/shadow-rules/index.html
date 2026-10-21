@@ -1,0 +1,110 @@
+<title>Shadow rules</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: one reading column; the rules as a numbered list; CSS mocks of three heights lit from one light, light and dark. */
+:root { --bg: #fcf9f8; --fg: #2a1418; --soft: #6e5459; --line: #e7e4e3; --card: #ffffff; --accent: #cb1b2c; --tint: #fbeeee; --font: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", system-ui, sans-serif; --mono: ui-monospace, "SF Mono", Menlo, monospace; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #171413; --fg: #fcf9f8; --soft: #c9b6ba; --line: #3c3736; --card: #221e1d; --accent: #ff5c6b; --tint: #2d2022; color-scheme: dark } }
+:root[data-theme="dark"] { --bg: #171413; --fg: #fcf9f8; --soft: #c9b6ba; --line: #3c3736; --card: #221e1d; --accent: #ff5c6b; --tint: #2d2022; color-scheme: dark }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font); font-size: 16px; line-height: 1.5; padding-block: 32px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+main { max-width: 1080px; margin-inline: auto; display: grid; gap: 36px; }
+h1 { font-size: 1.85rem; margin: 0 0 8px; text-wrap: balance; } h2 { font-size: 1.3rem; margin: 0 0 12px; text-wrap: balance; } h3 { font-size: 1rem; margin: 0 0 6px; }
+p { margin: 0; max-width: 68ch; } .soft { color: var(--soft); }
+.draft { display: inline-block; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); border: 1px solid currentColor; border-radius: 999px; padding: 2px 10px; margin-bottom: 12px; }
+.ask { background: var(--tint); border-radius: 12px; padding: 16px 20px; display: grid; gap: 8px; } .ask ul, .plain ul { margin: 0; padding-left: 20px; } .plain li { margin-bottom: 4px; }
+ol.rules { margin: 0; padding: 0; list-style: none; display: grid; gap: 18px; counter-reset: rule; }
+ol.rules > li { display: grid; grid-template-columns: 2.25rem 1fr; gap: 12px; counter-increment: rule; }
+ol.rules > li::before { content: counter(rule); font-weight: 700; color: var(--accent); font-size: 1.25rem; line-height: 1.2; }
+ol.rules > li > div { display: grid; gap: 8px; min-width: 0; } .why { color: var(--soft); font-size: 0.9375rem; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9375rem; font-variant-numeric: tabular-nums; } th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; } th { font-weight: 600; color: var(--soft); font-size: 0.8125rem; letter-spacing: 0.04em; text-transform: uppercase; } .wrap { overflow-x: auto; }
+code { font-family: var(--mono); font-size: 0.875em; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 12px; }
+figure { margin: 0; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px; min-width: 0; } figcaption { font-size: 0.8125rem; color: var(--soft); margin-bottom: 6px; }
+/* The mock: a page with one light at the right, and three surfaces at three heights. The cast grows with the height: farther, softer, fainter, always away from the light. */
+.mock { position: relative; aspect-ratio: 16 / 9; border-radius: 6px; overflow: hidden; background: var(--mpage); --lx: 86%; --ly: 30%; display: grid; grid-template-columns: repeat(3, 1fr); align-items: center; justify-items: center; padding: 0 8% 0 4%; box-sizing: border-box; }
+.mock .glow { position: absolute; inset: 0; background: radial-gradient(circle at var(--lx) var(--ly), var(--mglow) 0, transparent 45%); pointer-events: none; }
+.mock .ball { position: absolute; left: var(--lx); top: var(--ly); width: 14px; height: 14px; margin: -7px; border-radius: 50%; background: radial-gradient(circle at 40% 35%, #fff, var(--mball) 70%); box-shadow: 0 0 10px 3px var(--mglow); }
+.s { position: relative; width: 78%; aspect-ratio: 4 / 3; border-radius: 12px; background: var(--msurf); color: var(--mink); font-size: 12px; padding: 10px 12px; box-sizing: border-box; display: grid; align-content: start; gap: 2px; }
+.s b { font-size: 13px; }
+/* Height 1, resting: a tight contact shadow and a short cast. Height 2, raised: twice the distance, wider. Height 3, floating: four times, widest and faintest. All fall down and to the left, away from a light at the upper right. */
+.s1 { box-shadow: inset 2px -2px 3px -2px var(--mrim), -1px 1px 2px rgba(var(--mcast), 0.18), -2px 3px 10px -2px rgba(var(--mcast), 0.14); }
+.s2 { box-shadow: inset 2px -2px 3px -2px var(--mrim), -1px 1px 2px rgba(var(--mcast), 0.14), -5px 7px 20px -4px rgba(var(--mcast), 0.20); }
+.s3 { box-shadow: inset 2px -2px 3px -2px var(--mrim), -1px 1px 2px rgba(var(--mcast), 0.10), -10px 16px 40px -6px rgba(var(--mcast), 0.26); }
+.light { --mpage: #fcf9f8; --msurf: #fff; --mink: #2a1418; --mcast: 60, 48, 45; --mrim: rgba(255,255,255,0.9); --mglow: rgba(255,255,255,0.9); --mball: #fff; }
+.dark { --mpage: #171413; --msurf: #201c1b; --mink: #fcf9f8; --mcast: 0, 0, 0; --mrim: rgba(255,255,255,0.14); --mglow: rgba(255,232,226,0.55); --mball: #fee0dd; }
+.flat .s { box-shadow: 0 16px 40px rgba(var(--mcast), 0.16); }
+.flat .s1 { box-shadow: 0 1px 2px rgba(var(--mcast), 0.06), 0 4px 12px rgba(var(--mcast), 0.06); }
+.flat .s2 { box-shadow: 0 2px 4px rgba(var(--mcast), 0.08), 0 10px 24px rgba(var(--mcast), 0.10); }
+</style>
+<main>
+<header>
+  <span class="draft">Draft for your approval</span>
+  <h1>Shadow rules</h1>
+  <p class="soft">One rule for every shadow in Lantern, so the Popover's drop shadow never happens again. Today there are two shadow systems side by side: the glass cast that follows the page's light (D69), and three static drop shadows per theme (rest, hover, float) that always fall straight down. This page makes them one.</p>
+</header>
+
+<section class="ask">
+  <h2>Your turn</h2>
+  <ul>
+    <li><b>Look at</b> the two mocks under rule 3: the three heights lit from one light, beside the static shadows of today.</li>
+    <li><b>Decide</b> whether the three heights are the right three, and whether rule 5's mapping of each component to a height reads right.</li>
+    <li><b>Then</b> say yes, and this becomes decision D73 and a section of the Light and glass page, with the token change and the Popover as the first component moved over.</li>
+  </ul>
+</section>
+
+<section class="plain">
+  <h2>What React Aria gives us, and what it does not</h2>
+  <p>React Aria ships no shadows: it is unstyled on purpose, so its parts carry behavior and we carry the look. What it does give us is the list of things that float above the page, each with a name and a role: Popover, Menu, Tooltip, Dialog and Modal, plus the Select's menu built on Popover. That list is the backbone of rule 5. The physics in rules 1 to 4 come from D69 and from how a real light casts a shadow, not from a library.</p>
+</section>
+
+<section>
+  <h2>The rules</h2>
+  <ol class="rules">
+    <li><div><h3>One light casts every shadow.</h3><p>A shadow is the glass cast from the page's light (D69): it falls away from the light, in the theme's cast color, at the theme's strength. No component has a shadow of its own. The three static shadow tokens, rest, hover and float, retire.</p><p class="why">Today nine components still carry a static shadow. The Popover's is the one you saw: a 16px drop straight down while everything around it leans with the Orb.</p></div></li>
+    <li><div><h3>Three heights, and nothing in between.</h3><p>Every surface sits at one of three heights above the page, and its shadow says which. <b>Resting</b>: in the page's flow, a short cast and a tight contact shadow. <b>Raised</b>: lifted toward the light, twice the distance and wider; a hover or a press does this. <b>Floating</b>: above the page, four times the distance, widest and faintest; anything React Aria floats.</p><p class="why">Three is enough to tell apart at a glance and few enough to keep consistent. Material uses more levels; we do not have more kinds of surface.</p></div></li>
+    <li><div><h3>Higher is farther, softer and fainter.</h3><p>Each height scales the same cast: the distance doubles at each step, the blur grows with it, and the tint thins, because a shadow cast from higher up spreads out. The direction never changes within a page. The numbers below are the draft scale, with D69's resting values as the base.</p>
+      <div class="wrap"><table>
+        <thead><tr><th>Height</th><th>Distance</th><th>Blur</th><th>Cast tint, light mode</th><th>Contact</th></tr></thead>
+        <tbody>
+          <tr><td>Resting</td><td>1 × the theme's cast distance (4px)</td><td>1 × (40px)</td><td>1 × the theme's cast</td><td>Yes</td></tr>
+          <tr><td>Raised</td><td>2 ×</td><td>1.5 ×</td><td>1.2 ×</td><td>Yes, fainter</td></tr>
+          <tr><td>Floating</td><td>4 ×</td><td>2 ×</td><td>1.4 ×</td><td>No</td></tr>
+        </tbody>
+      </table></div>
+      <div class="grid">
+        <figure><figcaption>Proposed, light mode: resting, raised and floating, all cast from the light at the upper right</figcaption><div class="mock light"><div class="glow"></div><div class="s s1"><b>Resting</b>A card in the flow</div><div class="s s2"><b>Raised</b>Hovered or pressed</div><div class="s s3"><b>Floating</b>A popover or menu</div><span class="ball"></span></div></figure>
+        <figure><figcaption>Proposed, dark mode: the same three heights, a stronger cast, and the rim is the light's edge</figcaption><div class="mock dark"><div class="glow"></div><div class="s s1"><b>Resting</b>A card in the flow</div><div class="s s2"><b>Raised</b>Hovered or pressed</div><div class="s s3"><b>Floating</b>A popover or menu</div><span class="ball"></span></div></figure>
+        <figure><figcaption>Today, light mode: rest, hover and float as static tokens, every shadow straight down whatever the light does</figcaption><div class="mock light flat"><div class="glow"></div><div class="s s1"><b>Rest</b>shadow-rest</div><div class="s s2"><b>Hover</b>shadow-hover</div><div class="s s3"><b>Float</b>shadow-float</div><span class="ball"></span></div></figure>
+      </div>
+      <p class="why">The mocks are CSS, not the renderer. The direction and the growth are the point; the exact blur and tint come from each theme's glass tokens and would be captured in Storybook before anything merges.</p>
+    </div></li>
+    <li><div><h3>Night is stronger, day is softer, and the theme sets the tint.</h3><p>The cast is the theme's own: Spotlight's deep red, Sunrise's warm ink, Fireside's teal, at the theme's strength. Dark mode keeps its stronger cast and light mode the soft one you picked on Oct 20. The three heights scale those values; they never add a color of their own.</p></div></li>
+    <li><div><h3>Every component has one height, and the floating ones are React Aria's.</h3>
+      <div class="wrap"><table>
+        <thead><tr><th>Height</th><th>Components</th><th>Today</th></tr></thead>
+        <tbody>
+          <tr><td>Resting</td><td>Card, Tile, Action tile, Callout, Select's field, Checkbox box, Switch track, Tag, Toggle button group, Settings sheet at rest</td><td>Most carry the glass cast since #163; Callout, Settings and Switch still carry a static rest shadow</td></tr>
+          <tr><td>Raised</td><td>Any of the above while hovered or pressed; the Orb's ball</td><td>Button, Tile and Action tile already lift toward the light on hover; Select's field lifts since #163</td></tr>
+          <tr><td>Floating</td><td>Popover, Select's menu, Menu, Tooltip, Dialog, Modal, the Settings sheet when open; anything React Aria places in a portal</td><td>Popover and Select's menu use the static float shadow</td></tr>
+        </tbody>
+      </table></div>
+      <p class="why">A component never picks a shadow. It says which height it is at, and the height picks the shadow from the light.</p>
+    </div></li>
+    <li><div><h3>Settings change the strength, never the direction.</h3><p>Increase contrast makes the cast stronger and adds the 3 to 1 line under the rim (D69). Reduce transparency changes nothing about shadows. Reduce motion keeps the light still, so shadows stay still. Forced colors draw borders instead.</p></div></li>
+    <li><div><h3>One place in the code, checked by a test.</h3><p>The three heights are three classes on the shared glass edge, <code>ds-glass-edge--raised</code> and <code>ds-glass-edge--floating</code> beside the resting default, each setting the cast distance, blur and tint multipliers. A test fails when a component stylesheet uses <code>box-shadow</code> with anything but the glass cast, so a new component cannot bring its own shadow.</p></div></li>
+  </ol>
+</section>
+
+<section class="plain">
+  <h2>What it would take</h2>
+  <ul>
+    <li><b>Tokens:</b> three multipliers in the base (distance, blur and tint per height), no new value per theme. The three static shadow tokens are deleted once the last component is moved, with the lock updated.</li>
+    <li><b>Code:</b> two classes in glass.css; the Popover, Select's menu, Callout, Settings and Switch move over, one pull request for the floating ones and one for the resting ones. Dark mode keeps its own cast values as it does today.</li>
+    <li><b>Checks:</b> the stylesheet test above, and the screenshots of every moved component in every theme, light and dark, for your tick.</li>
+    <li><b>Docs:</b> this page as a section of Light and glass, decision D73 updating D69, and each moved component's Storybook page naming its height.</li>
+  </ul>
+</section>
+
+<section>
+  <p class="soft">Sources: D69 and D70 in Decisions, the theme shadow and glass tokens in lantern-code, React Aria's component list, and your note on the Popover of Oct 20.</p>
+</section>
+</main>

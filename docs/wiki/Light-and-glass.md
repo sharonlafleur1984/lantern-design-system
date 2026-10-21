@@ -21,6 +21,25 @@ Rules 2, 4, 6, 7 and 8 describe where the code goes. Today glass is still see-th
 8. **The light takes its color from what it falls on.** A lamp on a white wall shows as the wall's own color made brighter, so the light is never a white picture laid on top. On art it brightens the pattern it falls on (D59). On a plain page it takes only the page's own tint and shows through strength and falloff: the rims it hits go brighter, the shadows it casts fall away from it, and nothing turns the theme's color. That is what makes it show on a white Spotlight page instead of vanishing. Two mocks that tinted the light with the theme's red read as "a light bulb with a filter" and were dropped.
 9. **Every component near the light reacts the same way, whatever the source.** Whether the light is the product's resting source, the time of day, the cursor or a dragged Orb, every surface near it lights the same way from the same tokens, by day and at night.
 
+## Shadows
+
+Decided as D73 on Oct 20, 2026 ([the saved review page](../blob/main/docs/references/shadow-rules/index.html), with mocks).
+
+1. **One light casts every shadow.** A shadow is the glass cast from the page's light (D69): away from the light, in the theme's cast color, at the theme's strength. No component has a shadow of its own. The static tokens `shadow-rest`, `shadow-hover` and `shadow-float` retire once the last component has moved.
+2. **Three heights, and nothing in between.** Resting: in the page's flow, a short cast and a tight contact shadow. Raised: lifted toward the light, twice the distance and wider; a hover or a press does this. Floating: above the page, four times the distance, widest and faintest; anything React Aria floats.
+3. **Higher is farther, softer and fainter.** Each height scales the same cast. The direction never changes within a page.
+
+| Height | Distance | Blur | Cast tint | Contact |
+|---|---|---|---|---|
+| Resting | 1 × the theme's cast distance | 1 × | 1 × | Yes |
+| Raised | 2 × | 1.5 × | 1.2 × | Yes, fainter |
+| Floating | 4 × | 2 × | 1.4 × | No |
+
+4. **Night is stronger, day is softer, and the theme sets the tint.** The heights scale the theme's values and never add a color of their own.
+5. **Every component has one height, and the floating ones are React Aria's.** Floating: Popover, Select's menu, Menu, Tooltip, Dialog, Modal, the Settings sheet when open. Resting: Card, Tile, Action tile, Callout, Select's field, the Checkbox box, the Switch track, Tag, Toggle button group. Raised: any of those while hovered or pressed, and the Orb's ball. A component never picks a shadow; it says its height, and the height picks the shadow from the light.
+6. **Settings change the strength, never the direction.** Increase contrast makes the cast stronger and adds the 3:1 line under the rim (D69). Reduce transparency changes nothing about shadows. Reduce motion keeps the light still. Forced colors draw borders instead.
+7. **One place in the code, checked by a test.** The heights are classes on the shared glass edge, and a test fails when a component stylesheet draws a `box-shadow` that is not the glass cast.
+
 ## Component rules and product rules, kept apart
 
 Two levels, each with its own home.
