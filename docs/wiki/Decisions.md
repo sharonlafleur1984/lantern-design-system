@@ -97,7 +97,7 @@ Each decision has an ID (D1 is the oldest), so a pull request or another documen
 - **Why:** two shadow systems lived side by side, the glass cast that follows the light and three static drop shadows that always fell straight down, and each new component picked one. One rule, with a test, ends that.
 - **What React Aria gives:** no shadows, since it is unstyled, but the list of parts that float, which is the backbone of the fifth rule.
 - **Updates D69:** the glass edge gains two heights above its resting one.
-- **Code:** lantern-code, the shadow heights pull request (linked from the pull request that adds this entry); the Popover follows in its own once #159 is in.
+- **Code:** [lantern-code #169](https://github.com/sharonlafleur1984/lantern-code/pull/169); the Popover follows in its own pull request once #159 is in.
 
 </details>
 
