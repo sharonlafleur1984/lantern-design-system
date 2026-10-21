@@ -13,6 +13,7 @@ Each decision has an ID (D1 is the oldest), so a pull request or another documen
 | D72 | Oct 20, 2026 | The Orb's focus: one ring per theme, tight on the ball, with a light band inside |
 | D71 | Oct 20, 2026 | Six contrast fixes: each gap takes the nearest color that passes, three of them Sharon's own picks |
 | D70 | Oct 20, 2026 | Light and glass rules: glass bends everywhere, one light per page, and the light takes its color from what it falls on |
+| D69 | Oct 20, 2026 | Every surface wears the glass edge by default, lit by the page's light |
 | D68 | Oct 20, 2026 | The icon set is Lucide, behind an Icon component |
 | D67 | Oct 19, 2026 | The paint bucket goes; the Background menu under Try it out replaces it |
 | D66 | Oct 19, 2026 | Compare all: one orb moves across the stacked themes |
@@ -135,6 +136,27 @@ Each decision has an ID (D1 is the oldest), so a pull request or another documen
 - **Replaces:** the "only on art" part of D64, and D58's dark-mode-only cursor light.
 - **Issues:** closes [#49](https://github.com/sharonlafleur1984/lantern-design-system/issues/49) and answers the open questions in [#4](https://github.com/sharonlafleur1984/lantern-design-system/issues/4).
 - **Code:** none yet; the wiki page and the saved review page are in the pull request that adds this entry.
+
+</details>
+
+<details>
+<summary><b>D69 · Oct 20, 2026:</b> Every surface wears the glass edge by default, lit by the page's light</summary>
+
+- **Decided by:** Sharon ("Glass edge on every component"), ahead of a client theme that will be mostly glass.
+- **Decision:** every component with an edge or a surface wears the shared glass edge from `src/components/glass.css` by default, on a plain page as well as on art.
+- **Which parts:** Button (Primary and Secondary), Card, Tile, Action tile, Select and its menu, Checkbox, Switch, Tag and Toggle button group, and every new part with a surface, Popover included.
+- **Left out:** Text, Link, Separator, Tabs and icons have no surface. Tertiary buttons stay text only.
+- **What the edge is:** the Solid fill stays. The part takes the rim, the inner highlight and shade and the cast shadow from the theme's glass tokens, following the page's light.
+- **No base line on buttons, cards, tiles and tags** (Sharon, Oct 20, from three close-ups: the grey line under the rim "looks like an ugly grey uneven rendered border"). Their edge is the lit rim and the shadow. WCAG asks for a 3:1 boundary only where the boundary is what marks a control, and a labelled button needs none.
+- **Fields and boxes keep a 3:1 line** under their rim, `color-border-glass`: Select, the Checkbox box, the Switch track and the Toggle button group, since their boundary is what marks them. The contrast test checks those four. Small parts keep their shadow close.
+- **What changes on screen:** the faint 1px edges on fields and controls (the ones [#10](https://github.com/sharonlafleur1984/lantern-design-system/issues/10) found too light) are replaced by the rim and its line. Cards and tiles light up the same way buttons already did, and lose the grey line they had on a plain page.
+- **A soft light in light mode,** Sharon's pick from three pictures. The cast shadow is a quarter of its old tint, closer and nearly twice as blurred. A card carries that one shadow instead of stacking its resting shadow on it.
+- **Dark mode keeps its stronger shadow.** Each theme's `glass.cast`, `glass.contact`, `glass.shade`, `glass.cast-distance` and `glass.cast-blur` tokens changed in light mode only.
+- **Speed:** measured on the busiest Storybook pages before and after, light and dark. Every page still draws at 60 frames a second while the light moves, and style and layout work stays within a few milliseconds. The numbers are in the pull request.
+- **Why:** one edge recipe for every part, so a theme sets it once in its glass tokens and every component follows. A mostly-glass theme then needs no per-component work.
+- **Updates D64:** glass is still see-through only on art; the plain-page look D64 gave Button, Card and tiles is now every surface's default. Tags and toggle groups no longer keep a Solid look on a plain page.
+- **Issue:** none; part of the client-theme work.
+- **Code:** [lantern-code #163](https://github.com/sharonlafleur1984/lantern-code/pull/163)
 
 </details>
 
