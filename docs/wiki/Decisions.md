@@ -1,6 +1,6 @@
 # Decisions
 
-**Last updated:** October 19, 2026
+**Last updated:** October 21, 2026
 
 Newest first.
 
@@ -10,6 +10,7 @@ Each decision has an ID (D1 is the oldest), so a pull request or another documen
 
 | ID | Date | Decision |
 |---|---|---|
+| D74 | Oct 21, 2026 | Try it out's side panel follows the mouse: hovering a part shows it, a click pins it |
 | D73 | Oct 20, 2026 | Shadows: one light casts every shadow, at one of three heights; the static shadow tokens retire |
 | D72 | Oct 20, 2026 | The Orb's focus: one ring per theme, tight on the ball, with a light band inside |
 | D71 | Oct 20, 2026 | Six contrast fixes: each gap takes the nearest color that passes, three of them Sharon's own picks |
@@ -81,6 +82,24 @@ Each decision has an ID (D1 is the oldest), so a pull request or another documen
 | D1 | Sep 26, 2026 | Structure taken from the Life Hub Library |
 
 ## Decisions
+
+<details>
+<summary><b>D74 · Oct 21, 2026:</b> Try it out's side panel follows the mouse: hovering a part shows it, a click pins it</summary>
+
+- **Decided by:** Sharon, from a proposal in chat after the Popover page could only ever show the button that opens the popover ("what if we showed it on a hover instead and clicking just opens it"): "ok then yes."
+- **The rules:**
+  - Hovering a part in Try it out shows it in the side panel's Format tab while the mouse is over it. When the mouse leaves, the panel waits a moment (300ms, so crossing the window on the way to the panel doesn't flip it) and goes back to the pinned part, or to "Select a component" when nothing is pinned.
+  - Clicking a part pins it, and the click still does what it does in the part, like opening a popover. Tabbing to a part pins it too. The panel says Pinned next to the part's name.
+  - A click on empty space in the window clears the pin, and so does Escape when nothing is open to close first.
+  - Every part under the pointer is its own pick, not the example it sits in: a popover and the button that opens it are two picks, and a control inside a popover shows as itself.
+  - A pinned part that has gone from the page (a closed popover) keeps its last numbers, and the panel says it is closed.
+  - Nothing on the page marks the hovered or pinned part (D65 still holds).
+- **For a part that floats:** on the page a popover opens non-modal inside its window, so the page stays live around it, and the example keeps it open while the page scrolls. In an app it stays modal and closes on a press outside.
+- **Why:** with a popover open, its button could not be clicked without closing the popover, so a click could never pick the popover. Hover reaches both, and a pin gives you something to come back to.
+- **Updates D65:** picking was clicking or tabbing to a part; now hover shows and a click or Tab pins.
+- **Code:** [lantern-code #159](https://github.com/sharonlafleur1984/lantern-code/pull/159).
+
+</details>
 
 <details>
 <summary><b>D73 · Oct 20, 2026:</b> Shadows: one light casts every shadow, at one of three heights; the static shadow tokens retire</summary>
@@ -234,6 +253,7 @@ Each decision has an ID (D1 is the oldest), so a pull request or another documen
 - **Accessibility table:** row lines only, cells top-aligned, results are status badges, not buttons.
 - **Why:** reviewing meant scrolling to a bottom panel and hunting for controls. Everything now sits next to what it changes.
 - **Updates D52 and D50.** Mockup: [Lantern quick edit mockup](https://claude.ai/artifact/H2BdEXyWwwRpCdgJoJ3gJt) (private).
+- **Updated by D74:** the side panel follows the mouse; a click pins.
 - **Code:** [lantern-code #148](https://github.com/sharonlafleur1984/lantern-code/pull/148)
 - **Issues:** [#45](https://github.com/sharonlafleur1984/lantern-design-system/issues/45), [#46](https://github.com/sharonlafleur1984/lantern-design-system/issues/46), [#47](https://github.com/sharonlafleur1984/lantern-design-system/issues/47), [#48](https://github.com/sharonlafleur1984/lantern-design-system/issues/48), [#81](https://github.com/sharonlafleur1984/lantern-design-system/issues/81)
 
