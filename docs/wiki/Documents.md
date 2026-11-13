@@ -18,6 +18,7 @@ Private files aren't here. They're listed in Sharon's private Notion document in
 | [Add a component](Add-a-component) | Building a new component, or renaming one |
 | [How it fits together](Architecture) | Changing the build, or a value shows up in one place and not another |
 | [Light and glass](Light-and-glass) | You need the rules for see-through glass, the glass edge, where the light is and how bright it is |
+| [Truncation](Truncation) | Text doesn't fit: when to cut it, how, and what must never be cut |
 
 ## In this repo
 
