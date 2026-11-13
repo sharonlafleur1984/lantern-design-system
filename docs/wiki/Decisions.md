@@ -1,6 +1,6 @@
 # Decisions
 
-**Last updated:** October 21, 2026
+**Last updated:** November 12, 2026
 
 Newest first.
 
@@ -10,6 +10,7 @@ Each decision has an ID (D1 is the oldest), so a pull request or another documen
 
 | ID | Date | Decision |
 |---|---|---|
+| D75 | Nov 12, 2026 | Truncation: labels in fixed-size places end in an ellipsis with the full text kept; numbers are never cut |
 | D74 | Oct 21, 2026 | Try it out's side panel follows the mouse: hovering a part shows it, a click pins it |
 | D73 | Oct 20, 2026 | Shadows: one light casts every shadow, at one of three heights; the static shadow tokens retire |
 | D72 | Oct 20, 2026 | The Orb's focus: one ring per theme, tight on the ball, with a light band inside |
@@ -82,6 +83,16 @@ Each decision has an ID (D1 is the oldest), so a pull request or another documen
 | D1 | Sep 26, 2026 | Structure taken from the Life Hub Library |
 
 ## Decisions
+
+<details>
+<summary><b>D75 · Nov 12, 2026:</b> Truncation: labels in fixed-size places end in an ellipsis with the full text kept; numbers are never cut</summary>
+
+- **Decided by:** Sharon, after a client project's track names were cut off at a narrow width: "I just wanna make sure that the rules that we have are consistent so we should be writing rules and applying those tokens to our text components and any other components we have."
+- **The rules:** [Truncation](Truncation). Running text wraps; short labels in fixed-size places end in an ellipsis; the full text stays for screen readers and shows on hover and focus; abbreviations come from the content; numbers are never cut; under three characters a label becomes a marker.
+- **Why:** each component cut text its own way or not at all, so a narrow layout clipped labels mid-letter and clipped numbers, which then read as different numbers.
+- **Code:** a `truncate` option on the Text parts, in lantern-code.
+
+</details>
 
 <details>
 <summary><b>D74 · Oct 21, 2026:</b> Try it out's side panel follows the mouse: hovering a part shows it, a click pins it</summary>
