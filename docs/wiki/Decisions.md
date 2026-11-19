@@ -1,6 +1,6 @@
 # Decisions
 
-**Last updated:** November 12, 2026
+**Last updated:** November 19, 2026
 
 Newest first.
 
@@ -10,6 +10,16 @@ Each decision has an ID (D1 is the oldest), so a pull request or another documen
 
 | ID | Date | Decision |
 |---|---|---|
+| D85 | Nov 18, 2026 | A new component's design starts in Figma; when Figma and code differ, Sharon picks which is right |
+| D84 | Nov 18, 2026 | Text field and Number field: React Aria's fields with one shared look |
+| D83 | Nov 18, 2026 | Switch: a Glass look, the control label type, one motion, and three label positions |
+| D82 | Nov 18, 2026 | Text on art is ink on art with a letter halo, never a patch |
+| D81 | Nov 17, 2026 | Glass light is a crisp edge, and with the light off the rim holds still |
+| D80 | Nov 16, 2026 | Where clear glass fails contrast, use frosted; until it's built, each failure is a listed known gap |
+| D79 | Nov 16, 2026 | Checks run on the Mac, not GitHub Actions; screenshots don't block a merge |
+| D78 | Nov 12, 2026 | Icons: a color of their own, an extra small size, and a control's icon sized by its label |
+| D77 | Nov 12, 2026 | Lantern uses the Figma library's names for colors, borders and icons, with the same values |
+| D76 | Nov 12, 2026 | 1rem is 16px again |
 | D75 | Nov 12, 2026 | Truncation: labels in fixed-size places end in an ellipsis with the full text kept; numbers are never cut |
 | D74 | Oct 21, 2026 | Try it out's side panel follows the mouse: hovering a part shows it, a click pins it |
 | D73 | Oct 20, 2026 | Shadows: one light casts every shadow, at one of three heights; the static shadow tokens retire |
@@ -83,6 +93,153 @@ Each decision has an ID (D1 is the oldest), so a pull request or another documen
 | D1 | Sep 26, 2026 | Structure taken from the Life Hub Library |
 
 ## Decisions
+
+<details>
+<summary><b>D85 · Nov 18, 2026:</b> A new component's design starts in Figma; when Figma and code differ, Sharon picks which is right</summary>
+
+- **Decided by:** Sharon, while checking the Figma library against the code: "sometimes lantern is right so i should be able to pick which one is right one or the other or none."
+- **The rules:**
+  - Code and Storybook stay the source of truth for anything already built.
+  - The one exception is a new component design. Figma leads until Sharon approves it there, then the code is built to match it and becomes the source of truth again.
+  - When a check finds Figma and the code looking different, it fails and asks Sharon. She picks Figma, the code or neither, and the other side is changed to match.
+- **Why:** Sharon signs off on how things look in Figma. Code built from an older picture drifted from what she approved, and nothing told her.
+- **Code:** the "source of truth" rule in lantern-code's `AGENTS.md`.
+- **Backfilled** on Nov 19 from the commits and the conversation, for Sharon to confirm.
+
+</details>
+
+<details>
+<summary><b>D84 · Nov 18, 2026:</b> Text field and Number field: React Aria's fields with one shared look</summary>
+
+- **Decided by:** Sharon, approving the Figma designs the code mirrors. No quote is recorded.
+- **The rules:**
+  - Text field has a label and a box around the input. The box has the glass edge with a 3:1 line, and hover, focus and invalid share one treatment.
+  - It also has help text with an optional info icon, the error shown in place while the field is invalid, and a required mark.
+  - It comes in Solid, Glass and Frosted, single or multiple lines, with a trailing action slot.
+  - New base token: `control.height.multiline` (80px).
+  - Number field uses the same box. Its stepper buttons are two small icon-only tertiary Buttons at the end of the box. They're named after the label, out of the tab order, and turn off at the minimum and maximum.
+  - `hideStepper` leaves the steppers out. Read-only shows the value as plain text.
+- **Code:** [lantern-code #186](https://github.com/sharonlafleur1984/lantern-code/pull/186) (fixes [#58](https://github.com/sharonlafleur1984/lantern-design-system/issues/58)) and [lantern-code #187](https://github.com/sharonlafleur1984/lantern-code/pull/187).
+- **Backfilled** on Nov 19 from the commits, for Sharon to confirm.
+
+</details>
+
+<details>
+<summary><b>D83 · Nov 18, 2026:</b> Switch: a Glass look, the control label type, one motion, and three label positions</summary>
+
+- **Decided by:** Sharon. On the knob: neutral when off, not the disabled colors.
+- **The rules:**
+  - The Glass Switch has a clear track. The knob shows the state: primary when on, a neutral color when off. The off knob never uses the disabled colors, so off doesn't read as unavailable.
+  - The label uses the control label type, the same as Button's.
+  - The knob's slide and every color change share the base duration and the move easing. With Reduce motion they're instant.
+  - The label sits right (the default), left or on top.
+- **Code:** [lantern-code #185](https://github.com/sharonlafleur1984/lantern-code/pull/185).
+- **Backfilled** on Nov 19 from the commits and the conversation, for Sharon to confirm.
+
+</details>
+
+<details>
+<summary><b>D82 · Nov 18, 2026:</b> Text on art is ink on art with a letter halo, never a patch</summary>
+
+- **Decided by:** Sharon, after trying a blurred patch behind the words the same day. No quote is recorded.
+- **The rules:**
+  - Text on art uses `color.ink.on-art` with a halo that hugs the letters: `material.on-art` tint, halo-near and halo-far.
+  - The halo is dark in every mode, because ink on art never flips.
+  - It still reaches 4.5:1, tested on pure white and pure black art in every theme and mode.
+  - Icon-only buttons get no halo. It goes only behind words.
+- **Why:** a patch read as a smudge and clipped into hard edges in tight rows, like the ruler. A halo reads as natural light and works inside glass.
+- **Replaces:** the patch's blur, spread and solid tokens.
+- **Code:** [lantern-code #185](https://github.com/sharonlafleur1984/lantern-code/pull/185).
+- **Backfilled** on Nov 19 from the commits, for Sharon to confirm.
+
+</details>
+
+<details>
+<summary><b>D81 · Nov 17, 2026:</b> Glass light is a crisp edge, and with the light off the rim holds still</summary>
+
+- **Decided by:** Sharon, matching the light-off glass she approved in Figma. No quote is recorded.
+- **The rules:**
+  - The inner highlight is a crisp 1px line, not a wide wash.
+  - The rim is brightest where the light lands and fades smoothly, with no cut-off halo. Edge light never drops below about half, so far surfaces stay lit.
+  - Light off (`data-lighting="off"`, which can also be set on a single surface) keeps the glass rim and shade, lit from a fixed light.
+  - With the light off there is no rim glow: a faint line, a 1px top highlight and a shadow straight down. Only the lens steps aside.
+  - With the light off, only buttons keep the fixed rim. Groups and cards rest without one, and fields keep just their 3:1 line.
+- **Why:** the old highlight fogged the lit edge, so the light read as haze. Light off needed to match the approved design instead of rules invented in code.
+- **Replaces:** the `glass.rest` tokens and the made-up button rim, field line, highlight and bevel tokens.
+- **Open:** whether this matches D69 ("every surface wears the glass edge") on a plain page is still for Sharon to decide.
+- **Code:** [lantern-code #184](https://github.com/sharonlafleur1984/lantern-code/pull/184) and [#185](https://github.com/sharonlafleur1984/lantern-code/pull/185).
+- **Backfilled** on Nov 19 from the commits, for Sharon to confirm.
+
+</details>
+
+<details>
+<summary><b>D80 · Nov 16, 2026:</b> Where clear glass fails contrast, use frosted; until it's built, each failure is a listed known gap</summary>
+
+- **Decided by:** Sharon, as recorded in the commit: "where clear glass fails, use frosted."
+- **The rules:**
+  - Clear glass that can't reach the contrast it needs switches to frosted.
+  - Until frosted has a frost dark enough for the light ink, each failing check is listed as a known gap under [#99](https://github.com/sharonlafleur1984/lantern-design-system/issues/99).
+  - A gap fails loudly once it's fixed, so it gets taken off the list.
+- **Why:** D70 made glass see-through on plain pages too. Spotlight's and Fireside's glass ink is light, so their glass text on a light page was about 1:1, and every push failed.
+- **Code:** [lantern-code #181](https://github.com/sharonlafleur1984/lantern-code/pull/181) (D70's glass everywhere) and [#183](https://github.com/sharonlafleur1984/lantern-code/pull/183).
+- **Backfilled** on Nov 19 from the commits, for Sharon to confirm.
+
+</details>
+
+<details>
+<summary><b>D79 · Nov 16, 2026:</b> Checks run on the Mac, not GitHub Actions; screenshots don't block a merge</summary>
+
+- **Decided by:** Sharon. No quote is recorded.
+- **The rules:**
+  - lantern-code runs no GitHub Actions.
+  - Lint, types and tests run before each push. Screenshots and accessibility run by hand with `npm run test:visual` and `npm run test:a11y`. Releases run with `npm run release`.
+  - Approving new screenshots is optional. The `visual` check is no longer required to merge.
+- **Why:** Actions minutes cost money, and a workflow that can't start shows up as a failed check.
+- **Code:** [lantern-code #179](https://github.com/sharonlafleur1984/lantern-code/pull/179) and [#180](https://github.com/sharonlafleur1984/lantern-code/pull/180).
+- **Backfilled** on Nov 19 from the commits, for Sharon to confirm.
+
+</details>
+
+<details>
+<summary><b>D78 · Nov 12, 2026:</b> Icons: a color of their own, an extra small size, and a control's icon sized by its label</summary>
+
+- **Decided by:** Sharon, from the Figma library's icon tokens. No quote is recorded.
+- **The rules:**
+  - Icon reads `--icon-color`, falling back to `--icon-default`, instead of taking the text color. Button, Tag, Select and the Settings arrows set it. Icon tile and Action tile keep the text color.
+  - Button's icon slot sets the icon color, so a plain SVG in it follows the icon tone too.
+  - There's a new extra small size: `--icon-size-xsmall` (12px).
+  - An icon beside a label is sized by the label: `--control-label-icon-size-small`, `-medium` and `-large` are 12, 16 and 16px.
+  - An icon on its own is sized by the control: `--control-icon-size-*` are 16, 20 and 24px.
+- **Code:** [lantern-code #176](https://github.com/sharonlafleur1984/lantern-code/pull/176).
+- **Backfilled** on Nov 19 from the commits, for Sharon to confirm.
+
+</details>
+
+<details>
+<summary><b>D77 · Nov 12, 2026:</b> Lantern uses the Figma library's names for colors, borders and icons, with the same values</summary>
+
+- **Decided by:** Sharon. No quote is recorded.
+- **The rules:**
+  - The library's names become aliases of the tokens that already exist, with the same values.
+  - The names are defined once in `tokens/aliases/` and loaded last, so no existing value moves. Each name is the Figma path joined with hyphens.
+  - Components, stories and tests read the new names.
+  - Nothing is removed. `ink-primary` and `accent-text` keep their old meaning until the breaking step.
+  - The secondary Button's edge moves from the faint divider, which is under 3:1, to `--border-primary`. A new `outlineColor` option gives it a neutral edge.
+- **Why:** one name for one color, so Figma and code say the same thing.
+- **Code:** [lantern-code #173](https://github.com/sharonlafleur1984/lantern-code/pull/173), [#175](https://github.com/sharonlafleur1984/lantern-code/pull/175) and [#176](https://github.com/sharonlafleur1984/lantern-code/pull/176).
+- **Backfilled** on Nov 19 from the commits, for Sharon to confirm.
+
+</details>
+
+<details>
+<summary><b>D76 · Nov 12, 2026:</b> 1rem is 16px again</summary>
+
+- **Decided by:** Sharon. The change was made on Nov 3 and merged on Nov 12. No quote or reason is recorded; Sharon to add the reason.
+- **The rule:** the base is back to 1rem = 16px. Body text size is set on `body`, not `html`.
+- **Code:** [lantern-code #172](https://github.com/sharonlafleur1984/lantern-code/pull/172).
+- **Backfilled** on Nov 19 from the commits, for Sharon to confirm.
+
+</details>
 
 <details>
 <summary><b>D75 · Nov 12, 2026:</b> Truncation: labels in fixed-size places end in an ellipsis with the full text kept; numbers are never cut</summary>
